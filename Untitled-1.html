@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Table with Form</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Table with Form</h2>
+
+    <!-- Table -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- Table rows will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <!-- Form -->
+    <form id="data-form">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" required>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="addRow()">Submit</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+
+<script>
+    function addRow() {
+        // Get form values
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+
+        // Create a new row
+        var newRow = "<tr><td>" + (document.getElementById("table-body").childElementCount + 1) + "</td><td>" + name + "</td><td>" + email + "</td></tr>";
+
+        // Append the new row to the table
+        $("#table-body").append(newRow);
+
+        // Clear form fields
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+    }
+</script>
+
+</body>
+</html>
